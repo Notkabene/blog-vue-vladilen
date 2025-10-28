@@ -1,7 +1,6 @@
 <script setup lang="ts">
-
-import LayoutContainer from "@/components/LayoutContainer.vue";
 import LayoutHeader from "@/components/LayoutHeader.vue";
+import LayoutFooter from "@/components/LayoutFooter.vue";
 </script>
 
 <template>
@@ -15,9 +14,7 @@ import LayoutHeader from "@/components/LayoutHeader.vue";
     </main>
 
     <footer class="bg-white">
-      <LayoutContainer>
-        footer
-      </LayoutContainer>
+      <LayoutFooter/>
     </footer>
   </div>
 
