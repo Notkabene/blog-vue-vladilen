@@ -1,14 +1,12 @@
 <script setup lang="ts">
-
-import LayoutContainer from "@/components/LayoutContainer.vue";
+import LayoutHeader from "@/components/LayoutHeader.vue";
+import LayoutFooter from "@/components/LayoutFooter.vue";
 </script>
 
 <template>
   <div class="bg-gray-100 min-h-screen flex flex-col w-full">
     <header class="bg-white fixed t-0 left-0 right-0">
-      <LayoutContainer>
-        header
-      </LayoutContainer>
+      <LayoutHeader/>
     </header>
 
     <main class="flex-1 mt-26">
@@ -16,9 +14,7 @@ import LayoutContainer from "@/components/LayoutContainer.vue";
     </main>
 
     <footer class="bg-white">
-      <LayoutContainer>
-        footer
-      </LayoutContainer>
+      <LayoutFooter/>
     </footer>
   </div>
 

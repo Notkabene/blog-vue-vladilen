@@ -8,6 +8,15 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    port: 5174,
+    proxy: {
+      '/posts': {
+        target: 'http://localhost:3002',
+        changeOrigin: true,
+      },
+    }
+  },
   plugins: [
     vue(),
     vueDevTools(),
