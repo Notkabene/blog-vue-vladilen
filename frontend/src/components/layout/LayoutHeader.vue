@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LayoutContainer from "@/components/LayoutContainer.vue";
+import LayoutContainer from "@/components/layout/LayoutContainer.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {faBackward, faCode, faFile, faUsers} from "@fortawesome/free-solid-svg-icons";
 import {RouterLink} from "vue-router";

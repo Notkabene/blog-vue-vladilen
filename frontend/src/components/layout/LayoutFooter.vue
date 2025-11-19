@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import LayoutContainer from "@/components/LayoutContainer.vue";
+import LayoutContainer from "@/components/layout/LayoutContainer.vue";
 import {onBeforeMount, type Ref, ref} from "vue";
 
 const year = new Date().toLocaleString('ru-RU', {

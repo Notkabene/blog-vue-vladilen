@@ -10,12 +10,20 @@ const routes = [
     component: () => import('../views/LoginView.vue')
   },
   {
+    path: '/registration',
+    component: () => import('../views/RegistrationView.vue')
+  },
+  {
     path: '/users',
     component: () => import('../views/UsersView.vue')
   },
   {
-    path: '/post/:id',
+    path: '/post/',
     component: () => import('../views/NewArticleView.vue')
+  },
+  {
+    path: '/post/:id',
+    component: () => import('../views/ArticleView.vue')
   },
 ]
 

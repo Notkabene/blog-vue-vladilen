@@ -3,7 +3,8 @@
 </script>
 
 <template>
-Login
+<h1>Login</h1>
+  <RouterLink to="/registration">Перейти на форму регистрации</RouterLink>
 </template>
 
 <style scoped>

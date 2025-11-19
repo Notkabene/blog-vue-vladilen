@@ -3,7 +3,6 @@
 import ArticlesItem from "@/components/ArticlesItem.vue";
 import {useArticlesStore} from "@/stores/stores.ts";
 import {onBeforeMount} from "vue";
-import {formatDate} from "@/utils/dateFormaters.ts";
 
 const articlesStore = useArticlesStore();
 
