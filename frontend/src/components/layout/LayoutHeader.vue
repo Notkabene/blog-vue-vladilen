@@ -56,12 +56,12 @@ const handleLogout = async () => {
           <a @click="$router.go(-1)" class="hover:text-blue-500" aria-label="Назад">
             <FontAwesomeIcon :icon="faBackward"/>
           </a> &nbsp;&nbsp;
-          <RouterLink v-if="userStore.isAuthorized" to="/post" class="hover:text-blue-500"
+          <RouterLink v-if="userStore.isAuthorized && userStore.isAdmin" to="/post" class="hover:text-blue-500"
                       aria-label="Новая статья">
             <FontAwesomeIcon :icon="faFile"/>
           </RouterLink>&nbsp;&nbsp;
 
-          <RouterLink v-if="userStore.isAuthorized" to="/users" class="hover:text-blue-500"
+          <RouterLink v-if="userStore.isAuthorized && userStore.isAdmin" to="/users" class="hover:text-blue-500"
                       aria-label="Пользователи">
             <FontAwesomeIcon :icon="faUsers"/>
           </RouterLink>&nbsp;&nbsp;
