@@ -1,16 +1,22 @@
 import {acceptHMRUpdate, defineStore} from 'pinia'
-import {ref} from "vue";
-import {useArticlesStore} from "@/stores/stores.ts";
+import {computed, ref} from "vue";
 
-export const useUserStore = defineStore('user',()  => {
-  const user = ref({
-    login: '',
-    role: null
-  });
+const initUser = {
+  id: '',
+  login: '',
+  role: null,
+  roleId: null,
+  registeredAt: '',
+}
 
-  const register = async (login:string, password:string) => {
+export const useUserStore = defineStore('user', () => {
+  const user = ref(initUser);
+
+  const isAuthorized = computed(() => !!user.value.id)
+
+  const register = async (login: string, password: string) => {
     try {
-      const response = await fetch('/register', {
+      const response = await fetch('/api/register', {
         method: 'POST',
         body: JSON.stringify({login, password}),
         headers: {
@@ -18,20 +24,60 @@ export const useUserStore = defineStore('user',()  => {
         }
       })
 
-      if(!response.ok) {
+      if (!response.ok) {
         throw new Error('Ошибка регистрации пользователя')
       }
 
-      const data = await response.json()
-
-      return data;
-    }
-    catch (error) {
+      return await response.json();
+    } catch (error) {
       console.error(error)
     }
   }
 
-  return {user, register}
+  const login = async (login: string, password: string) => {
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        body: JSON.stringify({login, password}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      if (!response.ok) {
+        throw new Error('Ошибка авторизации пользователя')
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const logout = async () => {
+    try {
+      const response = await fetch('/api/logout', {
+        method: 'POST',
+      })
+
+      if (!response.ok) {
+        throw new Error('Ошибка логаута пользователя')
+      }
+
+      const data = await response.json()
+
+      if (!data.error) {
+        user.value = initUser
+      }
+
+      return data;
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
+  return {user, register, login, isAuthorized, logout}
 })
 
 if (import.meta.hot) {

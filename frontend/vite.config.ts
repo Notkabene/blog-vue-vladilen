@@ -13,13 +13,10 @@ export default defineConfig({
   server: {
     port: 5174,
     proxy: {
-      '/posts': {
+      '/api': {
         target: backendUrl,
         changeOrigin: true,
-      },
-      '/register': {
-        target: backendUrl,
-        changeOrigin: true,
+        rewrite:(path) => path.replace(/^\/api/, '')
       },
     }
   },

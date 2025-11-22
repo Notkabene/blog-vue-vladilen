@@ -6,35 +6,35 @@ const year = new Date().toLocaleString('ru-RU', {
   year: 'numeric',
 });
 
-const city: Ref<string> = ref('');
-const temp: Ref<number> = ref(0);
-const condition: Ref<string> = ref('');
+const city: Ref<string> = ref('Санкт-Петербург');
+const temp: Ref<number> = ref(22);
+const condition: Ref<string> = ref('солнечно');
 
-const fetchWeatherData = (lat: number, long: number, headers: {
-  'X-Yandex-Weather-Key': string
-}) => {
-  fetch(`https://api.weather.yandex.ru/v2/forecast?lat=${lat}&lon=${long}`, {headers})
-    .then(response => response.json())
-    .then(json => {
-      city.value = json.info.tzinfo.name;
-      temp.value = json.fact.temp;
-      condition.value = json.fact.condition;
-    });
-}
-
-onBeforeMount(() => {
-  const accessKey = import.meta.env.VITE_APP_YADEX_WEATHER_KEY;
-
-  const headers: { 'X-Yandex-Weather-Key': string } = {
-    'X-Yandex-Weather-Key': accessKey
-  };
-
-  navigator.geolocation.getCurrentPosition((position) => {
-    fetchWeatherData(position.coords.latitude, position.coords.longitude, headers)
-  }, () => {
-    fetchWeatherData(59.9386, 59.9386, headers)
-  })
-})
+// const fetchWeatherData = (lat: number, long: number, headers: {
+//   'X-Yandex-Weather-Key': string
+// }) => {
+//   fetch(`https://api.weather.yandex.ru/v2/forecast?lat=${lat}&lon=${long}`, {headers})
+//     .then(response => response.json())
+//     .then(json => {
+//       city.value = json.info.tzinfo.name;
+//       temp.value = json.fact.temp;
+//       condition.value = json.fact.condition;
+//     });
+// }
+//
+// onBeforeMount(() => {
+//   const accessKey = import.meta.env.VITE_APP_YADEX_WEATHER_KEY;
+//
+//   const headers: { 'X-Yandex-Weather-Key': string } = {
+//     'X-Yandex-Weather-Key': accessKey
+//   };
+//
+//   navigator.geolocation.getCurrentPosition((position) => {
+//     fetchWeatherData(position.coords.latitude, position.coords.longitude, headers)
+//   }, () => {
+//     fetchWeatherData(59.9386, 59.9386, headers)
+//   })
+// })
 
 </script>
 

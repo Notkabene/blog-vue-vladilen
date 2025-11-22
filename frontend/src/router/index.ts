@@ -1,4 +1,5 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import {createMemoryHistory, createRouter, createWebHistory} from 'vue-router'
+import {useUserStore} from "@/stores/user.ts";
 
 const routes = [
   {
@@ -10,16 +11,22 @@ const routes = [
     component: () => import('../views/LoginView.vue')
   },
   {
-    path: '/registration',
+    path: '/register',
     component: () => import('../views/RegistrationView.vue')
   },
   {
     path: '/users',
-    component: () => import('../views/UsersView.vue')
+    component: () => import('../views/UsersView.vue'),
+    meta: {
+      requireAuth: true,
+    }
   },
   {
     path: '/post/',
-    component: () => import('../views/NewArticleView.vue')
+    component: () => import('../views/NewArticleView.vue'),
+    meta: {
+      requireAuth: true,
+    }
   },
   {
     path: '/post/:id',
@@ -28,8 +35,21 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL || '/'),
   routes,
+})
+
+router.beforeEach((to, from, next) => {
+  if(to.meta.requireAuth) {
+    const userStore = useUserStore();
+    if(userStore.isAuthorized) {
+      next();
+    } else {
+      next('/login')
+    }
+  } else {
+    next();
+  }
 })
 
 export default router

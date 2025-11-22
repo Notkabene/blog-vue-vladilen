@@ -30,7 +30,8 @@ const handleSubmit = async (formData) => {
     if (data?.error) {
       throw new Error(data.error);
     }
-    await router.push('/login');
+    userStore.user = data.user;
+    await router.push('/');
   } catch (error) {
     errorMessage.value = error.message;
   }

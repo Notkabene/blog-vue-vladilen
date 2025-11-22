@@ -20,12 +20,11 @@ export const useArticlesStore = defineStore('articles', () => {
         }
 
         try {
-            const response = await fetch(`/posts?search=${searchQuery.value}&limit=6&page=${currentPage.value}`);
+            const response = await fetch(`/api/posts?search=${searchQuery.value}&limit=6&page=${currentPage.value}`);
             if (!response.ok) {
                 throw new Error('Posts request error');
             }
             const {data} = await response.json();
-
             articles.value = data.posts;
             totalPage.value = data.lastPage;
         } catch (err) {
