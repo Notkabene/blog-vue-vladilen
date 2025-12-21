@@ -46,12 +46,12 @@ const handleSubmit = async (formData) => {
           :validation-schema="schema">
       <div class="mb-4">
         <LabelBase for="login">Логин</LabelBase>
-        <InputBase type="text" name="login" id="login"/>
+        <InputBase type="text" name="login" id="login" autocomplete="on"/>
         <InputErrorBase name="login">Ошибка</InputErrorBase>
       </div>
       <div class="mb-4">
         <LabelBase for="password">Пароль</LabelBase>
-        <InputBase type="password" name="password" id="password"/>
+        <InputBase type="password" name="password" id="password" autocomplete="on"/>
         <InputErrorBase name="password">Ошибка</InputErrorBase>
       </div>
 

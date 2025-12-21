@@ -8,7 +8,3 @@
   </label>
 
 </template>
-
-<style scoped>
-
-</style>

@@ -7,7 +7,3 @@ import {ErrorMessage} from "vee-validate";
   <ErrorMessage class="text-red-500" />
 
 </template>
-
-<style scoped>
-
-</style>

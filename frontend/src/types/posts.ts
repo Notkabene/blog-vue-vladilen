@@ -1,8 +1,8 @@
 export interface Comment {
   id: string;
-  title: string;
+  author: string;
   content: string;
-
+  publishedAt: string;
 }
 export interface Post {
   id: string;

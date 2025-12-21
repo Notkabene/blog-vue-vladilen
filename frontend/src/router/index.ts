@@ -30,7 +30,8 @@ const routes = [
   },
   {
     path: '/post/:id',
-    component: () => import('../views/ArticleView.vue')
+    component: () => import('../views/ArticleView.vue'),
+    props: true,
   },
 ]
 

@@ -54,7 +54,3 @@ const condition: Ref<string> = ref('солнечно');
     </div>
   </LayoutContainer>
 </template>
-
-<style scoped>
-
-</style>

@@ -5,7 +5,3 @@
 <template>
   NewArticleView
 </template>
-
-<style scoped>
-
-</style>

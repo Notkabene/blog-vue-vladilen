@@ -55,22 +55,18 @@ const handleLogout = async () => {
         <p>
           <a @click="$router.go(-1)" class="hover:text-blue-500" aria-label="Назад">
             <FontAwesomeIcon :icon="faBackward"/>
-          </a> &nbsp;&nbsp;
+          </a>
           <RouterLink v-if="userStore.isAuthorized && userStore.isAdmin" to="/post" class="hover:text-blue-500"
                       aria-label="Новая статья">
             <FontAwesomeIcon :icon="faFile"/>
-          </RouterLink>&nbsp;&nbsp;
+          </RouterLink>
 
           <RouterLink v-if="userStore.isAuthorized && userStore.isAdmin" to="/users" class="hover:text-blue-500"
                       aria-label="Пользователи">
             <FontAwesomeIcon :icon="faUsers"/>
-          </RouterLink>&nbsp;&nbsp;
+          </RouterLink>
         </p>
       </div>
     </div>
   </LayoutContainer>
 </template>
-
-<style scoped>
-
-</style>

@@ -24,7 +24,3 @@ onBeforeMount(() => {
     </p>
   </section>
 </template>
-
-<style scoped>
-
-</style>

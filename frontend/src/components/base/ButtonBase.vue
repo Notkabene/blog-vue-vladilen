@@ -8,7 +8,3 @@
   </button>
 
 </template>
-
-<style scoped>
-
-</style>

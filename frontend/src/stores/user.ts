@@ -17,10 +17,6 @@ export const useUserStore = defineStore('user', () => {
   const isAdmin = computed(() => user.value.id && user.value.roleId === ROLES.ADMIN)
   const isModerator = computed(() => user.value.id && user.value.roleId === ROLES.MODERATOR)
 
-  console.log('isAdmin', isAdmin)
-  console.log('user.value.roleId', user.value)
-  console.log('ROLES.ADMIN', ROLES.ADMIN)
-
   const register = async (login: string, password: string) => {
     try {
       const response = await fetch('/api/register', {

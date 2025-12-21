@@ -47,7 +47,3 @@ watch(searchQuery, (newQuery) => {
     </ButtonBase>
   </form>
 </template>
-
-<style scoped>
-
-</style>

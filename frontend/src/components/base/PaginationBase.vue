@@ -54,7 +54,3 @@ const goToPage = (page: number) => {
     </li>
   </ul>
 </template>
-
-<style scoped>
-
-</style>
