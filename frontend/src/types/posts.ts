@@ -12,3 +12,9 @@ export interface Post {
   comments: Comment[];
   publishedAt: string;
 }
+
+export interface NewPost {
+  title: string;
+  imageUrl: string;
+  content: string;
+}

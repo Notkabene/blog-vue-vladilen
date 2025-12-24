@@ -1,6 +1,6 @@
 import {acceptHMRUpdate, defineStore} from 'pinia'
 import {ref} from "vue";
-import type {Post} from "@/types/posts.ts";
+import type {NewPost, Post} from "@/types/posts.ts";
 
 export const useArticleStore = defineStore('article', () => {
 
@@ -78,6 +78,28 @@ export const useArticleStore = defineStore('article', () => {
     }
   };
 
+  const addArticle = async (newArticle: NewPost) => {
+    try {
+      const response = await fetch(`/api/posts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newArticle),
+      });
+
+      if (!response.ok) {
+        throw new Error("Ошибка добавления статьи");
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+
   const addComment = async (newComment: string) => {
     try {
       const response = await fetch(`/api/posts/${article.value.id}/comments`, {
@@ -107,7 +129,7 @@ export const useArticleStore = defineStore('article', () => {
   }
 
 
-  const deleteComment = async (commentId:string) => {
+  const deleteComment = async (commentId: string) => {
     try {
       const response = await fetch(`/api/posts/${article.value.id}/comments/${commentId}`, {
         method: "DELETE",
@@ -118,7 +140,7 @@ export const useArticleStore = defineStore('article', () => {
       }
       const data = await response.json();
 
-      if(!data.error) {
+      if (!data.error) {
         article.value.comments = article.value.comments.filter(item => item.id !== commentId);
       }
 
@@ -129,7 +151,17 @@ export const useArticleStore = defineStore('article', () => {
   };
 
 
-  return {article, isInEditMode, toggleEditMode, fetchArticle, updateArticle, deleteArticle, addComment, deleteComment}
+  return {
+    article,
+    isInEditMode,
+    toggleEditMode,
+    fetchArticle,
+    updateArticle,
+    deleteArticle,
+    addArticle,
+    addComment,
+    deleteComment
+  }
 })
 
 if (import.meta.hot) {
